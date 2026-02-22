@@ -9,6 +9,48 @@ from datetime import datetime
 keyboard = Controller()
 os.startfile("RajGUI.pyw")
 
+TARGET_COLOR = (51, 122, 183)
+base_x, base_y = 775, 513
+
+def logout_fixer():
+    base_width, base_height = 1920, 1080
+
+    screen_width, screen_height = pg.size()
+    
+    scaled_x = int(base_x * (screen_width / base_width))
+    scaled_y = int(base_y * (screen_height / base_height))
+    
+    print(f"Logout Check: x:{scaled_x}, y:{scaled_y}")
+
+    current_color = pg.pixel(scaled_x, scaled_y)
+    
+    if current_color == TARGET_COLOR:
+        print(f"Match found!")
+        pg.click(scaled_x, scaled_y)
+        time.sleep(5)
+        for i in range(4):
+            time.sleep(0.3)
+            keyboard.press(Key.tab)
+            keyboard.release(Key.tab)
+        
+        time.sleep(0.3)
+        keyboard.press(Key.enter)
+        keyboard.release(Key.enter)
+
+        time.sleep(2)
+        
+        for i in range(6):
+            time.sleep(0.3)
+            keyboard.press(Key.tab)
+            keyboard.release(Key.tab)
+	
+        time.sleep(0.3)
+        keyboard.press(Key.down)
+        keyboard.release(Key.down)
+        time.sleep(0.3)
+        keyboard.press(Key.tab)
+        keyboard.release(Key.tab)
+
 alarm = ["10:40", "11:00", "11:20", "11:40", "12:00", "12:20", "12:40", "13:00", "13:20", "13:40"
 		,"14:00", "14:20", "14:40", "15:00", "15:15", "15:30", "15:45", "16:00", "16:15", "16:30"
 		,"16:45", "17:00", "17:15", "17:30", "17:45", "18:00", "18:20", "18:40", "19:00", "19:20"
@@ -16,9 +58,9 @@ alarm = ["10:40", "11:00", "11:20", "11:40", "12:00", "12:20", "12:40", "13:00",
 
 #Infinite Loop
 while True:
-	time.sleep(2)
+	time.sleep(3)
+	logout_fixer()
 
-	#Auto Pilot
 	try:
 		file = open("pilot.txt","r")
 		pilot=int(file.read())
