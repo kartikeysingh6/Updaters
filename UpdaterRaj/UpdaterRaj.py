@@ -51,7 +51,7 @@ while True:
 	except:
 		lestB=[0,1,2,3,4,5,6,7,8,9]
 
-	print("Auto Pilot:"+str(pilot)+", Anti-Repeat:"+str(antirepeat),curr)
+	print("Raj Auto Pilot:"+str(pilot)+", Anti-Repeat:"+str(antirepeat),curr)
 	
 	if curr in alarm and pilot==0:
 		winsound.Beep(2000, 3000)

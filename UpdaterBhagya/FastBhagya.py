@@ -68,7 +68,7 @@ while True:
 	keyboard.release(Key.f5)
 	time.sleep(tm/2)
 		
-	for i in range(6):
+	for i in range(5):
 		time.sleep(0.3)
 		keyboard.press(Key.tab)
 		keyboard.release(Key.tab)
